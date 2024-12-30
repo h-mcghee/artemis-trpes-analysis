@@ -1,0 +1,16 @@
+#virtual environment
+venv/
+env/
+.venv/
+
+#pyc files
+__pycache__/
+*.pyc
+
+#VSCode files
+.vscode/
+.DS_Store
+
+#ignore 
+/data/275 transdce_XUV_real_scan/ N*
+!data/275 transdce_XUV_real_scan/ N=1152/
