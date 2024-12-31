@@ -1,15 +1,13 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from data_processing import load_tof_axis, load_max_N, load_delay_time, load_delay_data, init_mat
-
-
+from functions import load_tof_axis, load_max_N, load_delay_time, load_delay_data, init_mat
 
 if __name__ == '__main__':
-    run_folder = 'data/275 transdce_XUV_real_scan'
+    run_folder = 'data/277 Static TransDCE_N2_79Vcal'
     t0 = -22.95
     save = True
-    out_file = 'processed_data/run_275_processed.txt'
+    out_file = 'processed_data/run_277_processed.txt'
     a = init_mat(run_folder, t0)
 
     x = a[0,1:]
@@ -29,4 +27,5 @@ if __name__ == '__main__':
     if save:
         np.savetxt(out_file,a, header = '# [0,1:] = TOF, [1:,0] = Delay, [1:,1:] = PES')
 
+    plt.tight_layout()
     plt.show()

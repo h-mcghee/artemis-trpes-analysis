@@ -2,11 +2,25 @@
 
 For processing time-resolved photoelectron data at the ARTEMIS facility
 
-## Data Structure
+## Work Flow
 
-process.py takes a run folder and t0 (stage position) to generate tof / delay matrix
+### 1. process.py
 
-### Data structure
+Specify the run folder and t0 parameter. This will save the tof / delay matrix. The first row and column are the tof/delay values respectively. The matrix elements are the photoelectron intensities. Script will save this matrix in "processed_data"
+
+### 2. tof_calib.ipynb
+
+Jupyter notebook for performing tof to eKE calibration. Saves calibration parameters in calibrations folder
+
+### 3. calib.py
+
+Takes a processed dataset (from step 1), and calibration parameters (from step 2) to generate an eKE calibrated matrix (with jacobian correction applied to the photoelectron intensities). Data is saved in the processed_data folder with the original filename with "_jac" appended. 
+
+### 4. analysis.ipynb
+
+Analysis notebook for loading in saved files (either calibrated or not) and plotting heatmaps and kinetic / spectral lineouts. 
+
+## Data structure
 
 Run folder (e.g "275 transdce_XUV_real_scan") contains subdirectories (N = 20, N = 40 etc) which are the cumulatively saved photoelectron counts. 
 
@@ -27,5 +41,3 @@ From these files, process.py:
 The data folder contains an example run from a previous experiment:
 
 McGhee, Henry G., et al. "Ultrafast photochemical processes in 1, 2-dichloroethene measured with a universal XUV probe." *Physical Chemistry Chemical Physics* 26.45 (2024): 28406-28416.
-
-Only
